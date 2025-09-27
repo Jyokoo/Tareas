@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input id="numero1" type="text" style="color: blueviolet; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"> 
+   <style> 
+    #parrafo{
+       font-family: fantasy;
+       font-size: 40px;
+       color: blue;
+    }
+
+
+   </style>
+    <button id="boton">APRÉTAME</button>
+    <p id="parrafo"></p>
+    <script>
+    document.getElementById("boton").addEventListener("click", preguntarNumero)
+     
+
+
+    function preguntarNumero(){
+    const val = document.getElementById("numero1").value 
+    document.getElementById("parrafo").innerHTML = val
+
+    }
+
+
+
+    
+    </script>
+</body>
+</html>
