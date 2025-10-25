@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estela de cursor</title>
+<style>
+    body {
+        height: 100vh;
+        margin: 0;
+       
+    }
+
+    #cursor-trail {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+
+    .QUESEMUEVA {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: blueviolet;
+        border-radius: 50%;
+        pointer-events: none;
+        transition:   100ms ease-out; ;
+        transform: translate(-50%, -50%);
+       
+    }
+</style>
+</head>
+<body>
+
+<div id="cursor-trail">
+    <div class="QUESEMUEVA"></div>
+    <div class="QUESEMUEVA"></div>
+    <div class="QUESEMUEVA"></div>
+    <div class="QUESEMUEVA"></div>
+    <div class="QUESEMUEVA"></div>
+    <div class="QUESEMUEVA"></div>
+    <div class="QUESEMUEVA"></div>
+    <div class="QUESEMUEVA"></div>
+    <div class="QUESEMUEVA"></div>
+    <div class="QUESEMUEVA"></div>
+</div>
+
+<script>
+    let estela = [];
+
+    document.body.addEventListener('mousemove', (e) => {
+        const objs = document.getElementsByClassName("QUESEMUEVA");
+
+        // guarda la posición actual del mouse
+        estela.push([e.clientX, e.clientY]);
+
+        // mantiene solo las últimas 10 posiciones
+        if (estela.length > objs.length) estela.shift();
+
+        // mueve cada círculo a su posición
+        for (let i = 0; i < estela.length; i++) {
+            const [x, y] = estela[i];
+            objs[i].style.left = x + "px";
+            objs[i].style.top = y + "px";
+        }
+    });
+</script>
+
+</body>
+</html>
